@@ -57,7 +57,7 @@ jobs:
 
       - name: Get EKS cluster credentials
         run: |
-          aws eks update-kubeconfig --region us-west-2 --name <your-cluster-name>
+          aws eks update-kubeconfig --region us-west-2 --name reverse-ip-cluster
 
       - name: Deploy to Kubernetes
         run: |
