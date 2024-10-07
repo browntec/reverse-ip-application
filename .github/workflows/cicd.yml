@@ -36,11 +36,11 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v3
 
-      - name: Install AWS CLI
+      - name: Install AWS CLI (update existing installation)
         run: |
           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
           unzip awscliv2.zip
-          sudo ./aws/install
+          sudo ./aws/install --update
 
       - name: Install kubectl
         run: |
@@ -53,13 +53,12 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-2  
+          aws-region: us-west-2  # Update with your region
 
       - name: Get EKS cluster credentials
         run: |
-          aws eks update-kubeconfig --region us-west-2 --name reverse-ip-cluster
+          aws eks update-kubeconfig --region us-west-2 --name <your-cluster-name>
 
       - name: Deploy to Kubernetes
         run: |
           helm upgrade --install reverse-ip-app ./reverse-ip-chart --set image.repository=yofrank1/reverse-ip-app,image.tag=v1
-
