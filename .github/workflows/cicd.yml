@@ -23,10 +23,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t your-dockerhub-username/reverse-ip-app:v1 .
+        run: docker build -t yofrank1/reverse-ip-app:v1 .
 
       - name: Push Docker image to DockerHub
-        run: docker push your-dockerhub-username/reverse-ip-app:v1
+        run: docker push yofrank1/reverse-ip-app:v1
 
   deploy:
     runs-on: ubuntu-latest
