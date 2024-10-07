@@ -1,0 +1,7 @@
+image:
+  repository: reverse-ip-app
+  tag: latest
+service:
+  type: LoadBalancer
+  port: 8080
+
